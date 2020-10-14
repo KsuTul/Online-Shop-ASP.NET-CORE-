@@ -34,7 +34,26 @@ namespace Online_Shop.Controllers
         public IActionResult LogIn()
         {
             return View();
+       
         }
 
+        [HttpGet]
+        public IActionResult Registration()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Registration(User user, string foreName, string surName)
+        {
+            if (user != null && foreName!=null && surName!=null)
+            {
+                user.FullName = foreName + surName;
+                _context.Users.Add(user);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }
