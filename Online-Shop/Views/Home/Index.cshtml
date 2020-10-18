@@ -9,7 +9,7 @@
 </head>
 <body>
 <h2>Welcome to book shop</h2>
-<p><a href="~/Home/BookGallery">Books</a></p>
-<p><a href="~/Home/LogIn">LogIn</a></p>
+<p><a asp-action="BookGallery" asp-controller="Home" asp-route-area="Store">Books</a></p>
+<p><a asp-action="Index" asp-controller="Home" asp-route-area="Users">LogIn</a></p>
 </body>
 </html>

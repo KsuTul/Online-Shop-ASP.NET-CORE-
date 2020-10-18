@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.Web.Optimization" Version="1.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.8">
       <PrivateAssets>all</PrivateAssets>
@@ -13,6 +14,13 @@
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Store\ViewComponents\" />
+    <Folder Include="Areas\Store\Views\Shared\" />
+    <Folder Include="Areas\Users\ViewComponents\" />
+    <Folder Include="Areas\Users\Views\Shared\" />
   </ItemGroup>
 
 </Project>

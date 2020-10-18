@@ -21,7 +21,10 @@ namespace Online_Shop
         {
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<BookShopContext>(options=>options.UseSqlServer(connectionString))
-            .AddControllersWithViews();
+            .AddControllersWithViews(mvcoptions=>
+            {
+                mvcoptions.EnableEndpointRouting = false; //отключение использования конечных точек
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,15 +43,22 @@ namespace Online_Shop
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseRouting();
+            //app.UseRouting();
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
+            app.UseMvc(routes =>
             {
-                endpoints.MapControllerRoute(
+                routes.MapRoute(
+                    name: "store-area",
+                    template: "Store/{controller = Home}/{action = Index}/{id?}");
+
+                routes.MapRoute(
+                      name: "user-area",
+                      template: "Users/{controller = Home}/{action = Index}/{id?}");
+                routes.MapRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
